@@ -78,10 +78,50 @@
         
         /* --- MOBILE RESPONSIVENESS RULES --- */
         @media (max-width: 768px) {
+            /* Fix the Navigation Bar Stacking for Mobile */
+            .command-nav {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 1.5rem !important;
+                padding: 1.5rem !important;
+            }
+            .brand-block {
+                margin-right: 0 !important;
+            }
+            .brand-main {
+                font-size: 1.8rem !important; /* Forces it to stay prominent on one line */
+            }
+            .brand-sub {
+                font-size: 0.8rem !important;
+                margin-top: 0.4rem !important;
+            }
+            .nav-controls {
+                width: 100% !important;
+                justify-content: center !important;
+                gap: 1.5rem !important;
+            }
+
             /* Keep Profile button visible on mobile, hide text links to save space */
             .top-nav-links { gap: 1rem; }
             .top-nav-links a:not(.highlight-link) { display: none; }
             
+            /* Fix Hero Text Wrapping for Mobile */
+            .hero {
+                padding: 4rem 1.5rem !important;
+                text-align: center !important;
+            }
+            .hero h1 {
+                font-size: 3rem !important; /* Clean sizing for the main hook */
+                line-height: 1.1 !important;
+            }
+            .hero .mute {
+                display: block !important;
+                font-size: 1.6rem !important;
+                margin-top: 1.2rem !important;
+                line-height: 1.4 !important;
+            }
+
             /* Profile Header Mobile Restructure */
             .resume-header { gap: 1.5rem !important; padding-bottom: 2rem !important; margin-bottom: 2rem !important; justify-content: center; text-align: center; }
             .resume-header > div:first-child { width: 180px !important; height: 180px !important; margin: 0 auto !important; }
