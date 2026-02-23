@@ -1,0 +1,392 @@
+:root {
+    /* LIGHT THEME (Default) */
+    --bg-color: #f4f4f4;
+    --text-color: #111;
+    --border-color: #ddd;
+    --accent: #00ff00;
+    --card-bg: #ffffff;
+    --secondary-text: #666;
+    --toggle-track: #ddd;
+    --toggle-knob: #333;
+    --toggle-border: #ccc;
+    
+    --visual-opacity: 0.4; 
+    --visual-hover: 0.7;
+}
+
+[data-theme="dark"] {
+    /* DARK THEME */
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --border-color: #333;
+    --accent: #00ff00;
+    --card-bg: #0a0a0a;
+    --secondary-text: #b0b0b0;
+    --toggle-track: #333;
+    --toggle-knob: #fff;
+    --toggle-border: #666;
+    
+    --visual-opacity: 0.3; 
+    --visual-hover: 0.8;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+body { 
+    background: var(--bg-color); 
+    color: var(--text-color); 
+    font-family: 'Helvetica Neue', Arial, sans-serif; 
+    line-height: 1.5; 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+/* LENIS SCROLL */
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* --- NAV & TOGGLE (FIXED SECTION) --- */
+nav.command-nav { 
+    display: flex; 
+    justify-content: space-between; 
+    padding: 2rem; 
+    border-bottom: 1px solid var(--border-color); 
+}
+
+.brand-main { font-weight: 900; letter-spacing: -0.5px; font-size: 1.2rem; }
+.brand-sub { font-size: 0.7rem; font-family: monospace; color: var(--secondary-text); margin-top: 0.2rem; }
+
+/* Toggle Button Container */
+.industrial-toggle { 
+    background: none; 
+    border: 1px solid var(--toggle-border); 
+    padding: 0.5rem 0.8rem; 
+    display: flex; 
+    align-items: center; 
+    gap: 0.8rem; 
+    cursor: pointer; 
+    transition: all 0.2s;
+}
+.industrial-toggle:hover { 
+    border-color: var(--text-color); 
+    background: rgba(125,125,125, 0.1); 
+}
+
+.mode-label {
+    font-size: 0.75rem;
+    font-family: monospace;
+    text-transform: uppercase;
+    color: var(--text-color);
+    font-weight: 700; 
+    letter-spacing: 0.5px;
+}
+
+.toggle-track { 
+    width: 30px; height: 14px; 
+    background: var(--toggle-track); 
+    border-radius: 10px; 
+    position: relative; 
+}
+.toggle-knob { 
+    width: 14px; height: 14px; 
+    background: var(--toggle-knob); 
+    border-radius: 50%; 
+    position: absolute; left: 0; 
+    transition: left 0.3s cubic-bezier(0.4, 0.0, 0.2, 1); 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3); 
+}
+[data-theme="dark"] .toggle-knob { left: 16px; }
+
+/* --- HERO & GENERAL (UPDATED) --- */
+.hero { padding: 8rem 2rem; }
+
+/* Fix for Indentation: Flex Column */
+h1 { 
+    font-size: clamp(3rem, 8vw, 6rem); 
+    line-height: 0.95; 
+    letter-spacing: -2px; 
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.mute { 
+    color: var(--secondary-text); 
+    margin-left: 4rem;
+}
+
+/* Larger indent for desktop */
+@media (min-width: 768px) {
+    .mute { margin-left: 18vw; }
+}
+
+.label { font-size: 0.7rem; font-family: monospace; text-transform: uppercase; border-bottom: 1px solid var(--border-color); padding: 1rem 2rem; margin-top: 4rem; color: var(--secondary-text); }
+
+/* --- ARSENAL MARQUEE (UPDATED) --- */
+#arsenal { border-bottom: 1px solid var(--border-color); overflow: hidden; background: var(--card-bg); position: relative; z-index: 2;}
+.marquee { white-space: nowrap; overflow: hidden; padding: 1.5rem 0; cursor: default; }
+
+.marquee-content { 
+    display: inline-block; 
+    animation: scroll 30s linear infinite; 
+    will-change: transform;
+}
+
+/* Fix for Carousel: Pause instead of Reset */
+.marquee:hover .marquee-content { 
+    animation-play-state: paused; 
+    -webkit-animation-play-state: paused;
+}
+
+.stat-item { display: inline-flex; align-items: center; gap: 1rem; margin-right: 4rem; font-family: monospace; font-size: 0.9rem; }
+.stat-item span { border: 1px solid var(--border-color); padding: 2px 6px; font-size: 0.7rem; color: var(--secondary-text); }
+
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* --- PROJECT GRID --- */
+.project-grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 1px; 
+    background: var(--border-color); 
+    border-bottom: 1px solid var(--border-color); 
+}
+@media (min-width: 768px) {
+    .project-grid { grid-template-columns: 1fr 1fr; } 
+    .span-full { grid-column: 1 / -1; } 
+}
+
+.card { background: var(--bg-color); padding: 3rem 2rem; cursor: pointer; min-height: 350px; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.card:hover { background: var(--card-bg); z-index: 10; } 
+
+/* Inner card flex container to push metrics to bottom */
+.card-inner {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+/* THE MAGIC PADDING: This stops the header from hitting the close button when expanded */
+.is-expanded .card-inner {
+    padding-right: 8rem; 
+}
+
+/* --- style.css --- */
+
+/* Find your existing .tag class and update it */
+.tag {
+    font-family: monospace;
+    font-size: 0.7rem;
+    border: 1px solid var(--text-color);
+    padding: 6px 12px;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+    line-height: 1.4;
+    
+    /* --- THE FIXES --- */
+    width: fit-content; /* Forces the box to wrap the text precisely */
+    align-self: flex-start; /* Prevents it from stretching across the card */
+    /* ---------------- */
+
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+h3 { font-size: 1.8rem; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+.desc { color: var(--secondary-text); font-family: monospace; font-size: 0.9rem; margin-bottom: 2rem; }
+
+.metrics-grid { display: flex; gap: 3rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; position: relative; z-index: 2; margin-top: auto; }
+.m-item strong { display: block; font-size: 1.5rem; }
+.m-item span { font-size: 0.6rem; font-family: monospace; color: var(--secondary-text); }
+
+/* VISUAL GRADIENTS */
+/* IN YOUR style.css FILE */
+.visual { 
+    position: absolute; 
+    bottom: -50px; 
+    right: -50px; 
+    width: 250px; 
+    height: 250px; 
+    filter: blur(80px); 
+    opacity: 0; 
+    
+    /* --- THE CHANGE: Push it to the background --- */
+    z-index: 0;  /* Was 1 */
+    /* -------------------------------------------- */
+    
+    transform: scale(0.8);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s ease; 
+    pointer-events: none;
+    will-change: opacity, transform;
+}
+
+.card:hover .visual { 
+    opacity: var(--visual-hover); 
+    transform: scale(1);
+}
+
+/* --- 4 UNIQUE VIBRANT GRADIENTS WITH DYNAMIC ACCENT VARIABLES --- */
+.gradient-a { --card-accent: #ff00cc; background: radial-gradient(circle, #ff00cc, #333399); } /* Neon Violet/Pink */
+.gradient-b { --card-accent: #00ffcc; background: radial-gradient(circle, #00ffcc, #009966); } /* Cyber Teal/Green */
+.gradient-c { --card-accent: #ff6600; background: radial-gradient(circle, #ffcc00, #ff6600); } /* Sunset Orange/Yellow */
+.gradient-d { --card-accent: #00ccff; background: radial-gradient(circle, #00ccff, #0033cc); } /* Electric Deep Blue */
+
+/* --- EXPANDED STATE (Focus Mode) --- */
+.project-card.is-cloned { 
+    position: fixed; 
+    z-index: 9999; 
+    top: 0; left: 0; 
+    width: auto; height: auto; 
+    transform-origin: top left;
+    will-change: top, left, width, height; 
+    backface-visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5); 
+}
+.project-card.is-cloned.is-expanded { 
+    top: 0 !important; left: 0 !important; 
+    width: 100vw !important; height: 100vh !important; 
+    padding: 4rem; 
+    display: flex; flex-direction: column; 
+    background: var(--bg-color); 
+    overflow-y: auto; 
+    color: var(--text-color);
+    border: none;
+}
+
+.expanded-content { 
+    opacity: 0; 
+    transform: translateY(15px); 
+    transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s; 
+    margin-top: 5rem; 
+    max-width: 20000px; /* <--- INCREASED FOR WIDE SCREENS */
+    width: 100%;
+    font-size: 1.1rem; 
+    flex: 2; 
+}
+.is-expanded .expanded-content { opacity: 1; transform: translateY(0); }
+
+/* The 50/50 Split Logic */
+.expanded-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 4rem;
+    align-items: start;
+    width: 100%;
+    height: 100%;
+}
+
+/* Stack vertically on mobile/small screens */
+@media (max-width: 1024px) {
+    .expanded-split {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* Close Button Fixed Positioning */
+.close-btn-float { 
+    position: absolute; 
+    top: 2rem; 
+    right: 2rem; 
+    background: var(--text-color); 
+    color: var(--bg-color); 
+    border: none; 
+    padding: 0.8rem 1.2rem; 
+    cursor: pointer; 
+    opacity: 0; 
+    transition: 0.3s ease 0.4s; 
+    font-weight: bold;
+    z-index: 100; /* Protects button layer */
+}
+.is-expanded .close-btn-float { opacity: 1; }
+.project-card.is-invisible { opacity: 0; pointer-events: none; }
+.overlay-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 9990; opacity: 0; pointer-events: none; transition: 0.4s; backdrop-filter: blur(2px); }
+.overlay-backdrop.active { opacity: 1; pointer-events: auto; }
+
+/* --- HISTORY & CONTACT --- */
+.manifest-container { border-bottom: 1px solid var(--border-color); }
+.manifest-row { display: flex; justify-content: space-between; padding: 2rem; border-bottom: 1px solid var(--border-color); align-items: flex-start; transition: opacity 0.3s; }
+.manifest-container:hover .manifest-row { opacity: 0.3; } 
+.manifest-container .manifest-row:hover { opacity: 1; cursor: default; }
+
+.manifest-time { font-family: monospace; width: 150px; color: var(--secondary-text); }
+.manifest-role h3 { font-size: 1.2rem; margin: 0; }
+.manifest-org { font-size: 0.9rem; color: var(--secondary-text); }
+.manifest-tag { border: 1px solid var(--border-color); padding: 2px 8px; font-size: 0.7rem; border-radius: 12px; color: var(--secondary-text);}
+
+.comms-grid { padding: 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+.span-full { grid-column: 1 / -1; }
+.email-card { border: 1px solid var(--border-color); padding: 3rem; display: block; text-decoration: none; color: inherit; transition: border-color 0.2s; }
+.email-card:hover { border-color: var(--text-color); }
+.comms-header { display: flex; justify-content: space-between; margin-bottom: 1rem; font-family: monospace; font-size: 0.7rem; }
+.status-indicator { color: var(--accent); }
+.email-text { font-size: clamp(2rem, 5vw, 4rem); letter-spacing: -1px; margin-bottom: 1rem; }
+.comms-card { display: flex; align-items: center; gap: 1rem; text-decoration: none; color: var(--text-color); padding: 1rem; border: 1px solid transparent; transition: border-color 0.2s; }
+.comms-card:hover { border: 1px solid var(--border-color); }
+
+footer { padding: 2rem; text-align: center; border-top: 1px solid var(--border-color); margin-top: auto; color: var(--secondary-text); font-size: 0.8rem; font-family: monospace;}
+
+
+
+/* FORCE THE POSTER TO BE FULL SIZE */
+.full-poster-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important; /* Removes the 80vh limit */
+    object-fit: cover !important;
+    display: block;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+}
+
+/* --- FIX EXPANDED WHITESPACE --- */
+
+/* 1. Stop the inner card from stretching vertically */
+.is-expanded .card-inner {
+    flex-grow: 0; 
+    padding-right: 8rem; /* Keeps your close button protected */
+}
+
+/* 2. Remove the 'auto' margin that was pushing content down */
+.is-expanded .metrics-grid {
+    margin-top: 1rem; /* Sets a fixed, tight spacing instead of auto */
+}
+
+/* 3. Pull the new 50/50 content slightly closer to the metrics */
+.expanded-content {
+    margin-top: 2rem; 
+}
+
+/* --- DYNAMIC ACCENT CLASSES --- */
+.tech-stack-box {
+    background: var(--card-bg); 
+    border: 1px solid var(--border-color); 
+    /* This uses the specific card color, falling back to green if missing */
+    border-left: 3px solid var(--card-accent, var(--accent)); 
+    padding: 1.5rem; 
+    font-family: monospace; 
+    margin-top: 2rem; 
+    font-size: 0.9rem;
+}
+
+.action-btn {
+    display: inline-block; 
+    padding: 12px 24px; 
+    /* This border dynamically changes color */
+    border: 1px solid var(--card-accent, var(--accent)); 
+    color: var(--text-color); 
+    text-decoration: none; 
+    font-family: monospace; 
+    font-size: 0.8rem; 
+    margin-top: 1.5rem; 
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: var(--card-accent, var(--accent));
+    color: #000; /* Ensures text is readable against bright colors */
+}

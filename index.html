@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubh Sudan | AI Engineer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    
+    <style>
+        /* 1. FIXED: Safely pause marquee without causing a layout jump */
+        .marquee:hover .marquee-content,
+        .marquee:hover .stat-item {
+            animation-play-state: paused;
+        }
+
+        /* 2. Sleek Navbar Link Styles */
+        .top-nav-links {
+            display: flex; 
+            gap: 2rem; 
+            align-items: center;
+        }
+        .top-nav-links a {
+            color: var(--text-color);
+            font-family: monospace;
+            text-decoration: none;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s, background 0.3s, border-color 0.3s;
+        }
+        .top-nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        /* Profile Button (Default/Dark Mode) */
+        .top-nav-links .highlight-link {
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 6px 16px;
+            border-radius: 4px;
+        }
+        .top-nav-links .highlight-link:hover {
+            background: var(--accent);
+            color: var(--bg-color);
+        }
+
+        /* Profile Button (Light Mode Override - Sleek Blue) */
+        html[data-theme='light'] .top-nav-links .highlight-link {
+            color: #0056b3; 
+            border-color: #0056b3;
+        }
+        html[data-theme='light'] .top-nav-links .highlight-link:hover {
+            background: #0056b3;
+            color: #ffffff;
+        }
+
+        /* 3. Sync Expanded Popup (Interior & Close Button) to Blue in Light Mode */
+        html[data-theme='light'] .is-expanded,
+        html[data-theme='light'] .is-cloned {
+            --accent: #0056b3 !important;
+            --card-accent: #0056b3 !important;
+        }
+
+        /* 4. Download Button Hover Fix */
+        .download-btn:hover {
+            background-color: var(--text-color) !important;
+            color: var(--bg-color) !important;
+            cursor: pointer;
+        }
+        
+        /* Adjust Nav Controls */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+        
+        /* Mobile adjustment for navbar */
+        @media (max-width: 768px) {
+            .top-nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+     <nav class="command-nav">
+        <div class="brand-block">
+            <div class="brand-main">SHUBH SUDAN</div>
+            <div class="brand-sub">AI/ML ENGINEER — ROCHESTER, NY</div>
+        </div>
+        
+        <div class="nav-controls">
+            <div class="top-nav-links">
+                <a href="https://linkedin.com/in/shubh-sudan13" target="_blank">LinkedIn</a>
+                <a href="https://github.com/shubhsudan" target="_blank">GitHub</a>
+                <a href="#" onclick="event.preventDefault(); openInteractiveResume();" class="highlight-link">Profile</a>
+            </div>
+            
+            <button id="theme-btn" class="industrial-toggle">
+                <span class="mode-label">THEME</span>
+                <div class="toggle-track"><div class="toggle-knob"></div></div>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>
+                Ideator | Doer.
+                <span class="mute">Moving Ahead One Step At A Time.</span>
+            </h1>
+        </section>
+
+        <section id="arsenal">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <div class="stat-item"><span>ENGINEERING</span><strong>PyTorch / TensorFlow</strong></div>
+                    <div class="stat-item"><span>RESEARCH</span><strong>WGAN / GANs</strong></div>
+                    <div class="stat-item"><span>MANAGEMENT</span><strong>Team Lead</strong></div>
+                    <div class="stat-item"><span>MANAGEMENT</span><strong>Communication</strong></div>
+                    <div class="stat-item"><span>MANAGEMENT</span><strong>Event Management</strong></div>
+                    <div class="stat-item"><span>CLOUD</span><strong>AWS / Google Cloud</strong></div>
+                    <div class="stat-item"><span>LIBRARIES</span><strong>Scikit-learn / Pandas</strong></div>
+                    <div class="stat-item"><span>ARCHITECTURE</span><strong>BERT / NLP</strong></div>
+                    <div class="stat-item"><span>ENGINEERING</span><strong>PyTorch / TensorFlow</strong></div>
+                    <div class="stat-item"><span>RESEARCH</span><strong>WGAN / GANs</strong></div>
+                    <div class="stat-item"><span>CLOUD</span><strong>AWS / Google Cloud</strong></div>
+                    <div class="stat-item"><span>LIBRARIES</span><strong>Scikit-learn / Pandas</strong></div>
+                    <div class="stat-item"><span>ARCHITECTURE</span><strong>BERT / NLP</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="work">
+            <h2 class="label">PROJECT EXPERIENCE</h2>
+            <div class="project-grid">
+                
+                <article class="card project-card" onclick="expandProject('tumor-wgan')">
+                    <div class="card-inner">
+                        <span class="tag">01 / GANS | Deep Learning | Python</span>
+                        <h3>Tumor Image Augmentation And Classification</h3>
+                        <p class="desc">Programmatic Pipeline For Tumor Image Augmentation...</p>
+                        <div class="metrics-grid">
+                            <div class="m-item"><strong>28%</strong><span>BASELINE ACCURACY</span></div>
+                            <div class="m-item"><strong>80%</strong><span>IMPROVED ACCURACY</span></div>
+                        </div>
+                    </div>
+                    <div class="visual gradient-a"></div> 
+                </article>
+
+                <article class="card project-card" onclick="expandProject('psychology-engine')">
+                    <div class="card-inner">
+                        <span class="tag">02 / Machine Learning | XGBOOST | Git | Google Cloud | Python | Google Script | React</span>
+                        <h3>Candidate Psychology Classification And Job Role Prediction</h3>
+                        <p class="desc">End-to-end application pipeline hosted on cloud using an ML Model.</p>
+                        <div class="metrics-grid">
+                            <div class="m-item"><strong>XGBoost</strong><span>CORE MODEL</span></div>
+                            <div class="m-item"><strong>Google Cloud Platform</strong><span>DEPLOYMENT</span></div>
+                        </div>
+                        <div class="visual gradient-b"></div>
+                    </div>
+                </article>
+
+                <article class="card project-card" onclick="expandProject('hinglish-bot')">
+                    <div class="card-inner">
+                        <span class="tag">03 / Natural Language Processing | BERT | Transformer | Python</span>
+                        <h3>Hinglish Chatbot</h3>
+                        <p class="desc">Curated A Custom Encoder-Decoder Architechture For Conversation.</p>
+                        <div class="metrics-grid">
+                            <div class="m-item"><strong>BERT</strong><span>KEY ARCHITECTURE</span></div>
+                            <div class="m-item"><strong>80%</strong><span>ACCURACY</span></div>
+                        </div>
+                        <div class="visual gradient-c"></div>
+                    </div>
+                </article>
+
+                <article class="card project-card" onclick="expandProject('blissiq')">
+                    <div class="card-inner">
+                        <span class="tag">04 / Prototyping | Course Curation | Product Development | Communication | Leadership | Logistical Planning</span>
+                        <h3>BlissIQ Application</h3>
+                        <p class="desc">Product Team Member Of BlissIQ</p>
+                        <div class="metrics-grid">
+                            <div class="m-item"><strong>Course Curation</strong><span>Learning How To Learn</span></div>
+                            <div class="m-item"><strong>Prototyping</strong><span>Design Articulation</span></div>
+                        </div>
+                        <div class="visual gradient-d"></div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2 class="label">LIFE JOURNEY</h2>
+           
+            <div class="manifest-container">
+                <div class="manifest-row">
+                    <div class="manifest-time">2026 — PRES</div>
+                    <div class="manifest-role">
+                        <h3>Research Assistant</h3>
+                        <span class="manifest-org">Rochester Institute of Technology</span>
+                    </div>
+                    <div class="manifest-tag">ACADEMIC</div>
+                </div>
+            
+                <div class="manifest-row">
+                    <div class="manifest-time">2025 — PRES</div>
+                    <div class="manifest-role">
+                        <h3>Masters in Artificial Intelligence</h3>
+                        <span class="manifest-org">Rochester Institute of Technology</span>
+                    </div>
+                    <div class="manifest-tag">ACADEMIC</div>
+                </div>
+
+                <div class="manifest-row">
+                    <div class="manifest-time">2024 — 2025</div>
+                    <div class="manifest-role">
+                        <h3>Research & Development Intern</h3>
+                        <span class="manifest-org">Diacto Technologies Pvt. Ltd.</span>
+                    </div>
+                    <div class="manifest-tag">R&D</div>
+                </div>
+                
+                <div class="manifest-row">
+                    <div class="manifest-time">2021 — 2025</div>
+                    <div class="manifest-role">
+                        <h3>Bachelors in AI & ML</h3>
+                        <span class="manifest-org">Symbiosis Institute of Technology</span>
+                    </div>
+                    <div class="manifest-tag">ACADEMIC</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="label">ALWAYS HAPPY TO GET IN TOUCH!</h2>
+            <div class="comms-grid" style="display: flex;">
+                
+                <a href="mailto:ss2401@rit.edu" class="comms-card span-full email-card" style="width: 100%;">
+                    <div class="comms-header">
+                        <span class="comms-label">EMAIL FOR A QUICK RESPONSE</span>
+                        <span class="status-indicator"></span>
+                    </div>
+                    <div class="comms-main">
+                        <h3 class="email-text">ss2401 [at] rit [dot] edu</h3>
+                        <span class="action-text">CLICK TO CONNECT</span>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+    
+    <footer>
+        <p>&copy; Shubh Sudan Resume - All Rights Reserved.</p>
+    </footer>
+
+    <audio id="car-unlock-sound" src="unlock.mp3" preload="auto"></audio>
+    
+    <script src="script.js"></script>
+
+    <div id="resume-content-source" style="display: none;">
+        <div class="resume-wrapper" style="max-width: 100%; margin: 0 auto; text-align: left;">
+            
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4rem; margin-bottom: 4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 4rem;">
+                <div style="width: 280px; height: 280px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; margin: 0 auto;">
+                    <img src="Shubh_Photo.jpeg" alt="Shubh Sudan" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <h2 style="font-size: 3rem; letter-spacing: -1px; margin-bottom: 0.5rem;">Shubh Sudan</h2>
+                    <p style="font-family: monospace; color: var(--accent); margin-bottom: 1.5rem; font-size: 1.1rem;">AI Engineer | Automotive Enthusiast | Honest Learner</p>
+                    <p style="color: var(--secondary-text); font-size: 1.2rem; line-height: 1.7; max-width: 1000px;">I am a 23-year-old AI graduate student at RIT, fascinated by the intersection of AI, automotive systems, and healthcare. Welcome to my world. I am someone who is driven by a strong moral compass and an intense passion for cars and bikes—they aren't just metal to me; they are an emotion. I believe in working hard, adapting constantly, and staying humble. I am not just looking for a career; I am looking for mentorship to bridge my gaps and cultivate my true potential.</p>
+                </div>
+            </div>
+
+            <h3 style="font-family: monospace; color: var(--secondary-text); margin-bottom: 2rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">Beyond The Code</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; display: flex; flex-direction: column;">
+                    <strong style="display: block; margin-bottom: 2.5rem; color: var(--text-color); font-size: 1.4rem;">The Idols</strong>
+                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                        
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <div style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
+                                <img src="IMG_0262.png" alt="My Family" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div>
+                                <strong style="color: var(--text-color); font-family: monospace; font-size: 1.1rem;">My Parents</strong>
+                                <p style="color: var(--secondary-text); font-size: 0.95rem; line-height: 1.5; margin-top: 0.5rem;">The foundation of my traits. They ingrained the will to always do the right thing, in the best way possible.</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <div style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
+                                <img src="Schumacher_9.webp" alt="Michael Schumacher" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div>
+                                <strong style="color: var(--text-color); font-family: monospace; font-size: 1.1rem;">Michael Schumacher</strong>
+                                <p style="color: var(--secondary-text); font-size: 0.95rem; line-height: 1.5; margin-top: 0.5rem;">Taught me to always give my 1000% in whichever task I perform.</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <div style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
+                                <img src="Rajiv_Bajaj.jpg.webp" alt="Rajiv Bajaj" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div>
+                                <strong style="color: var(--text-color); font-family: monospace; font-size: 1.1rem;">Rajiv Bajaj</strong>
+                                <p style="color: var(--secondary-text); font-size: 0.95rem; line-height: 1.5; margin-top: 0.5rem;">Every time I listen to his speech, I learn something new. From Homeopathy to Yoga, to leadership and marketing.</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <div style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
+                                <img src="Ms_Dhoni.jpg" alt="MS Dhoni" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <div>
+                                <strong style="color: var(--text-color); font-family: monospace; font-size: 1.1rem;">MS Dhoni</strong>
+                                <p style="color: var(--secondary-text); font-size: 0.95rem; line-height: 1.5; margin-top: 0.5rem;">The epitome of composure. He taught me the importance of staying calm and collected under immense pressure.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; display: flex; flex-direction: column;">
+                    <strong style="display: block; margin-bottom: 2.5rem; color: var(--text-color); font-size: 1.4rem; text-align: center;">The Mentor</strong>
+                    
+                    <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
+                        <div style="text-align: center; margin-bottom: 3rem;">
+                            <div style="width: 300px; height: 300px; border-radius: 50%; overflow: hidden; border: 2px solid var(--border-color); margin: 0 auto; background: #222;">
+                                <img src="Om_Sir.jpeg" alt="Om Maurya" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                            <strong style="display: block; color: var(--text-color); font-family: monospace; font-size: 1.4rem; margin-top: 2.5rem;">Mr. Om Maurya</strong>
+                            <span style="color: var(--accent); font-size: 1.1rem; font-family: monospace;">CEO, Diacto Technologies</span>
+                        </div>
+                        <p style="color: var(--secondary-text); font-size: 1.15rem; line-height: 1.8; text-align: center; font-style: italic; max-width: 85%; margin: 0 auto;">
+                            "I was never the smartest guy in the room, but I always worked and adapted."
+                        </p>
+                        <p style="color: var(--secondary-text); font-size: 1.15rem; line-height: 1.8; text-align: center; margin-top: 1.5rem; max-width: 85%; margin: 0 auto;">
+                            He taught me the true value of staying down-to-earth and humble.
+                        </p>
+                    </div>
+                </div>
+
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; display: flex; flex-direction: column;">
+                    <strong style="display: block; margin-bottom: 2.5rem; color: var(--text-color); font-size: 1.4rem;">My Passion And Hobbies</strong>
+                    
+                    <div style="flex-grow: 1; display: flex; flex-direction: column;">
+                        <div style="width: 100%; height: 380px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); margin-bottom: 3rem; background: #222;">
+                             <img src="IMG_0094.png" alt="Automotive Passion" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        
+                        <ul style="list-style-type: none; padding: 0; margin: 0; color: var(--secondary-text); font-family: monospace; font-size: 1.2rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-evenly; line-height: 1.4;">
+                            <li><span style="color: var(--accent); margin-right: 15px; font-weight: bold;">1</span> Going On Long Drives</li>
+                            <li><span style="color: var(--accent); margin-right: 15px; font-weight: bold;">2</span> Vehicular Detailing</li>
+                            <li><span style="color: var(--accent); margin-right: 15px; font-weight: bold;">3</span> Finance</li>
+                            <li><span style="color: var(--accent); margin-right: 15px; font-weight: bold;">4</span> Reading Books</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-left: 6px solid var(--accent); padding: 3rem; border-radius: 8px;">
+                <strong style="display: block; margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.3rem;">The Raw Truth</strong>
+                <p style="color: var(--secondary-text); font-size: 1.1rem; line-height: 1.8;">
+                    I pride myself on honesty and a strong will, having walked away from shortcuts because they didn't feel morally right. 
+                    But I am a work in progress. 
+                    Because I strive to be ethically correct, I sometimes overthink simple situations, 
+                    and I am actively pushing myself to break out of superficial learning and dive deeper into my craft. 
+                    I am looking for an environment that cultivates these positives and helps me bridge my gaps to become a better human being.
+                </p>
+            </div>
+
+            <div style="margin-top: 5rem; margin-bottom: 3rem; text-align: center;">
+                <p style="color: var(--secondary-text); font-family: monospace; font-size: 0.9rem; margin-bottom: 1.5rem;">FOR THE FORMAL DETAILS:</p>
+                <a href="Shubh_Sudan_AIML_Resume.pdf" download class="action-btn download-btn" style="--card-accent: var(--text-color); border: 1px solid var(--text-color); padding: 16px 32px; font-size: 1rem; text-decoration: none; color: var(--text-color); transition: all 0.3s; display: inline-block;">
+                    DOWNLOAD TRADITIONAL PDF
+                </a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
