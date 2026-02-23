@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
     
     <style>
-        /* 1. FIXED: Safely pause marquee without causing a layout jump */
+        /* 1. Pause marquee perfectly on hover without jumping */
         .marquee:hover .marquee-content,
         .marquee:hover .stat-item {
             animation-play-state: paused;
@@ -76,9 +76,34 @@
             gap: 2.5rem;
         }
         
-        /* Mobile adjustment for navbar */
+        /* --- MOBILE RESPONSIVENESS RULES --- */
         @media (max-width: 768px) {
-            .top-nav-links { display: none; }
+            /* Keep Profile button visible on mobile, hide text links to save space */
+            .top-nav-links { gap: 1rem; }
+            .top-nav-links a:not(.highlight-link) { display: none; }
+            
+            /* Profile Header Mobile Restructure */
+            .resume-header { gap: 1.5rem !important; padding-bottom: 2rem !important; margin-bottom: 2rem !important; justify-content: center; text-align: center; }
+            .resume-header > div:first-child { width: 180px !important; height: 180px !important; margin: 0 auto !important; }
+            .resume-header h2 { font-size: 2.2rem !important; }
+            .resume-header > div:last-child { min-width: 100% !important; text-align: center; }
+            
+            /* Collapse 3-Column Grid to 1 Vertical Column */
+            .resume-grid { grid-template-columns: 1fr !important; gap: 2rem !important; margin-bottom: 2rem !important; }
+            .resume-card { padding: 1.5rem !important; }
+            
+            /* Shrink and stack Idols */
+            .idol-item { flex-direction: column !important; text-align: center; gap: 1rem !important; }
+            .idol-img { width: 120px !important; height: 120px !important; margin: 0 auto; }
+            
+            /* Shrink Mentor Image */
+            .mentor-img { width: 200px !important; height: 200px !important; }
+            
+            /* Adjust Escapes Box */
+            .escapes-img { height: 200px !important; margin-bottom: 1.5rem !important; }
+            
+            /* Adjust Raw Truth Box */
+            .truth-box { padding: 1.5rem !important; }
         }
     </style>
 </head>
@@ -263,8 +288,8 @@
     <div id="resume-content-source" style="display: none;">
         <div class="resume-wrapper" style="max-width: 100%; margin: 0 auto; text-align: left;">
             
-            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 4rem; margin-bottom: 4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 4rem;">
-                <div style="width: 280px; height: 280px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; margin: 0 auto;">
+            <div class="resume-header" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4rem; margin-bottom: 4rem; border-bottom: 1px solid var(--border-color); padding-bottom: 4rem;">
+                <div class="profile-img" style="width: 280px; height: 280px; border-radius: 50%; overflow: hidden; border: 2px solid var(--accent); flex-shrink: 0; margin: 0 auto;">
                     <img src="Shubh_Photo.jpeg" alt="Shubh Sudan" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div style="flex: 1; min-width: 300px;">
@@ -276,14 +301,14 @@
 
             <h3 style="font-family: monospace; color: var(--secondary-text); margin-bottom: 2rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">Beyond The Code</h3>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+            <div class="resume-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
                 
-                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; display: flex; flex-direction: column;">
-                    <strong style="display: block; margin-bottom: 2.5rem; color: var(--text-color); font-size: 1.4rem;">My Idols</strong>
+                <div class="resume-card" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; display: flex; flex-direction: column;">
+                    <strong style="display: block; margin-bottom: 2.5rem; color: var(--text-color); font-size: 1.4rem;">The Idols</strong>
                     <div style="display: flex; flex-direction: column; gap: 2rem;">
                         
-                        <div style="display: flex; align-items: center; gap: 1.5rem;">
-                            <div style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
+                        <div class="idol-item" style="display: flex; align-items: center; gap: 1.5rem;">
+                            <div class="idol-img" style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
                                 <img src="IMG_0262.png" alt="My Family" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <div>
@@ -292,8 +317,8 @@
                             </div>
                         </div>
 
-                        <div style="display: flex; align-items: center; gap: 1.5rem;">
-                            <div style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
+                        <div class="idol-item" style="display: flex; align-items: center; gap: 1.5rem;">
+                            <div class="idol-img" style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
                                 <img src="Schumacher_9.webp" alt="Michael Schumacher" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <div>
@@ -302,8 +327,8 @@
                             </div>
                         </div>
 
-                        <div style="display: flex; align-items: center; gap: 1.5rem;">
-                            <div style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
+                        <div class="idol-item" style="display: flex; align-items: center; gap: 1.5rem;">
+                            <div class="idol-img" style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
                                 <img src="Rajiv_Bajaj.jpg.webp" alt="Rajiv Bajaj" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <div>
@@ -312,8 +337,8 @@
                             </div>
                         </div>
                         
-                        <div style="display: flex; align-items: center; gap: 1.5rem;">
-                            <div style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
+                        <div class="idol-item" style="display: flex; align-items: center; gap: 1.5rem;">
+                            <div class="idol-img" style="width: 150px; height: 150px; border-radius: 10%; overflow: hidden; border: 1px solid var(--border-color); flex-shrink: 0; background: #222;">
                                 <img src="Ms_Dhoni.jpg" alt="MS Dhoni" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <div>
@@ -325,12 +350,12 @@
                     </div>
                 </div>
 
-                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; display: flex; flex-direction: column;">
-                    <strong style="display: block; margin-bottom: 2.5rem; color: var(--text-color); font-size: 1.4rem; text-align: center;">My Mentor</strong>
+                <div class="resume-card" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; display: flex; flex-direction: column;">
+                    <strong style="display: block; margin-bottom: 2.5rem; color: var(--text-color); font-size: 1.4rem; text-align: center;">The Mentor</strong>
                     
                     <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center;">
                         <div style="text-align: center; margin-bottom: 3rem;">
-                            <div style="width: 300px; height: 300px; border-radius: 50%; overflow: hidden; border: 2px solid var(--border-color); margin: 0 auto; background: #222;">
+                            <div class="mentor-img" style="width: 300px; height: 300px; border-radius: 50%; overflow: hidden; border: 2px solid var(--border-color); margin: 0 auto; background: #222;">
                                 <img src="Om_Sir.jpeg" alt="Om Maurya" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             <strong style="display: block; color: var(--text-color); font-family: monospace; font-size: 1.4rem; margin-top: 2.5rem;">Mr. Om Maurya</strong>
@@ -345,11 +370,11 @@
                     </div>
                 </div>
 
-                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; display: flex; flex-direction: column;">
+                <div class="resume-card" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 3rem; display: flex; flex-direction: column;">
                     <strong style="display: block; margin-bottom: 2.5rem; color: var(--text-color); font-size: 1.4rem;">My Passion And Hobbies</strong>
                     
                     <div style="flex-grow: 1; display: flex; flex-direction: column;">
-                        <div style="width: 100%; height: 380px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); margin-bottom: 3rem; background: #222;">
+                        <div class="escapes-img" style="width: 100%; height: 380px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); margin-bottom: 3rem; background: #222;">
                              <img src="IMG_0094.png" alt="Automotive Passion" style="width: 100%; height: 100%; object-fit: cover;">
                         </div>
                         
@@ -364,7 +389,7 @@
 
             </div>
 
-            <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-left: 6px solid var(--accent); padding: 3rem; border-radius: 8px;">
+            <div class="truth-box" style="background: var(--card-bg); border: 1px solid var(--border-color); border-left: 6px solid var(--accent); padding: 3rem; border-radius: 8px;">
                 <strong style="display: block; margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.3rem;">The Raw Truth</strong>
                 <p style="color: var(--secondary-text); font-size: 1.1rem; line-height: 1.8;">
                     I pride myself on honesty and a strong will, having walked away from shortcuts because they didn't feel morally right. 
