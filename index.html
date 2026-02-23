@@ -14,7 +14,7 @@
             animation-play-state: paused;
         }
 
-        /* 2. Sleek Navbar Link Styles */
+        /* 2. Sleek Navbar Link Styles (Desktop) */
         .top-nav-links {
             display: flex; 
             gap: 2rem; 
@@ -76,9 +76,10 @@
             gap: 2.5rem;
         }
         
-        /* --- MOBILE RESPONSIVENESS RULES --- */
+        /* --- MOBILE RESPONSIVENESS RULES (ONLY APPLIES TO PHONES) --- */
         @media (max-width: 768px) {
-            /* Fix the Navigation Bar Stacking for Mobile */
+            
+            /* HEADER & NAVBAR MOBILE FIX */
             .command-nav {
                 flex-direction: column !important;
                 align-items: center !important;
@@ -89,47 +90,80 @@
             .brand-block {
                 margin-right: 0 !important;
             }
-            .brand-main {
-                font-size: 1.8rem !important; /* Forces it to stay prominent on one line */
-            }
-            .brand-sub {
-                font-size: 0.8rem !important;
-                margin-top: 0.4rem !important;
-            }
+            .brand-main { font-size: 1.8rem !important; }
+            .brand-sub { font-size: 0.8rem !important; margin-top: 0.4rem !important; }
+            
             .nav-controls {
                 width: 100% !important;
+                flex-direction: column !important; /* Stack links above theme toggle */
                 justify-content: center !important;
                 gap: 1.5rem !important;
             }
-
-            /* Keep Profile button visible on mobile, hide text links to save space */
-            .top-nav-links { gap: 1rem; }
-            .top-nav-links a:not(.highlight-link) { display: none; }
             
-            /* Fix Hero Text Wrapping for Mobile */
-            .hero {
-                padding: 4rem 1.5rem !important;
-                text-align: center !important;
+            /* Bring back all links and center them beautifully */
+            .top-nav-links { 
+                gap: 1.2rem !important; 
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                width: 100% !important;
             }
-            .hero h1 {
-                font-size: 3rem !important; /* Clean sizing for the main hook */
-                line-height: 1.1 !important;
+            .top-nav-links a { 
+                display: inline-block !important; /* Forces them to show */
+                font-size: 0.85rem !important; 
             }
-            .hero .mute {
-                display: block !important;
-                font-size: 1.6rem !important;
-                margin-top: 1.2rem !important;
+            .top-nav-links .highlight-link {
+                padding: 6px 12px !important;
+            }
+            
+            /* HERO SECTION MOBILE FIX */
+            .hero { padding: 4rem 1.5rem !important; text-align: center !important; }
+            .hero h1 { font-size: 2.8rem !important; line-height: 1.2 !important; }
+            .hero .mute { display: block !important; font-size: 1.4rem !important; margin-top: 1rem !important; line-height: 1.4 !important; }
+
+            /* =========================================
+               EXPANDED PROJECT CARDS (MOBILE FIX) 
+               ========================================= */
+            .project-card.is-expanded {
+                padding: 4.5rem 1.5rem 2rem 1.5rem !important; /* Adds top padding so text doesn't hide behind close button */
+            }
+            .project-card.is-expanded h3 {
+                font-size: 1.6rem !important; /* Smaller title */
+                line-height: 1.3 !important;
+                margin-bottom: 1rem !important;
+                white-space: normal !important; /* Allows title to drop to next line */
+            }
+            .project-card.is-expanded .tag {
+                font-size: 0.75rem !important;
+                white-space: normal !important; /* Allows long tags to wrap cleanly */
                 line-height: 1.4 !important;
+                margin-bottom: 1rem !important;
+                display: inline-block !important;
+            }
+            .project-card.is-expanded .desc {
+                font-size: 1rem !important;
+                line-height: 1.6 !important;
+                margin-bottom: 2rem !important;
+            }
+            .project-card.is-expanded .metrics-grid {
+                grid-template-columns: 1fr !important; /* Stacks the metrics vertically instead of squishing */
+                gap: 1rem !important;
+            }
+            .close-btn-float {
+                top: 15px !important;
+                right: 15px !important;
+                font-size: 0.8rem !important;
+                padding: 8px 16px !important;
             }
 
-            /* Profile Header Mobile Restructure */
-            .resume-header { gap: 1.5rem !important; padding-bottom: 2rem !important; margin-bottom: 2rem !important; justify-content: center; text-align: center; }
-            .resume-header > div:first-child { width: 180px !important; height: 180px !important; margin: 0 auto !important; }
+            /* PROFILE "BEYOND THE CODE" MOBILE GRID FIX */
+            .expanded-content { padding: 1rem !important; } 
+            .resume-header { gap: 1.5rem !important; padding-bottom: 1.5rem !important; margin-bottom: 1.5rem !important; justify-content: center; text-align: center; }
+            .resume-header .profile-img { width: 180px !important; height: 180px !important; margin: 0 auto !important; }
             .resume-header h2 { font-size: 2.2rem !important; }
             .resume-header > div:last-child { min-width: 100% !important; text-align: center; }
             
             /* Collapse 3-Column Grid to 1 Vertical Column */
-            .resume-grid { grid-template-columns: 1fr !important; gap: 2rem !important; margin-bottom: 2rem !important; }
+            .resume-grid { grid-template-columns: 1fr !important; gap: 1.5rem !important; margin-bottom: 1.5rem !important; }
             .resume-card { padding: 1.5rem !important; }
             
             /* Shrink and stack Idols */
@@ -137,7 +171,7 @@
             .idol-img { width: 120px !important; height: 120px !important; margin: 0 auto; }
             
             /* Shrink Mentor Image */
-            .mentor-img { width: 200px !important; height: 200px !important; }
+            .mentor-img { width: 200px !important; height: 200px !important; margin-bottom: 1.5rem !important; }
             
             /* Adjust Escapes Box */
             .escapes-img { height: 200px !important; margin-bottom: 1.5rem !important; }
